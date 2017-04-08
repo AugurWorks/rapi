@@ -1,4 +1,7 @@
 var extend = require('extend');
+var demo = require('./lib/demo');
+var datastore = require('./lib/datastore');
+
 var express = require('express');
 var app = express();
 
@@ -14,17 +17,8 @@ var defaultOptions = {
 app.get('/', function (req, res) {
   var options = extend(true, {}, defaultOptions, req.query);
 
-  var result = child.execSync('./SampleMD ' + [options.username, options.password, options.exchange, options.ticker].join(' '), {
-    cwd: '/opt/app/datastore/samples'
-  });
-  var lines = new Buffer(result).toString().split('\n').filter(line => line.indexOf('DATA ') === 0);
-  var data = lines.map(line => {
-    var cols = line.slice("DATA ".length).split(' ');
-    return {
-      val: cols[0],
-      date: new Date(parseInt(cols[1]) * 1000)
-    };
-  });
+  var data = process.env.DEMO === 'true' ? demo(options) : datastore(options);
+
   res.send(data);
 });
 
