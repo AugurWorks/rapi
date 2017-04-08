@@ -10,8 +10,8 @@ var child = require('child_process');
 var defaultOptions = {
   exchange: 'CME',
   ticker: 'ESM7',
-  start: 1491226200,
-  end: 1491312600,
+  start: '1491226200',
+  end: '1491312600',
   period: 15,
   username: process.env.USERNAME,
   password: process.env.PASSWORD
@@ -19,6 +19,8 @@ var defaultOptions = {
 
 app.get('/', function (req, res) {
   var options = extend(true, {}, defaultOptions, req.query);
+  options.start = parseInt(options.start);
+  options.end = parseInt(options.end);
 
   var data = process.env.DEMO === 'true' ? demo(options) : datastore(options);
 
