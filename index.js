@@ -10,6 +10,9 @@ var child = require('child_process');
 var defaultOptions = {
   exchange: 'CME',
   ticker: 'ESM7',
+  start: 1491226200,
+  end: 1491312600,
+  period: 15,
   username: process.env.USERNAME,
   password: process.env.PASSWORD
 };
