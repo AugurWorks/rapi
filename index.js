@@ -5,8 +5,6 @@ var datastore = require('./lib/datastore');
 var express = require('express');
 var app = express();
 
-var child = require('child_process');
-
 var defaultOptions = {
   exchange: 'CME',
   ticker: 'ESM7',
