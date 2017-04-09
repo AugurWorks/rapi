@@ -226,10 +226,10 @@ int main(int argc, char * * argv, char * * envp) {
 
   replayParams.bCustomSession = false;
 
-  replayParams.iStartSsboe = 1490044000;
+  replayParams.iStartSsboe = atol(argv[6]);
   replayParams.iStartUsecs = 0;
 
-  replayParams.iEndSsboe   = 1490648700;
+  replayParams.iEndSsboe   = atol(argv[7]);
   replayParams.iEndUsecs   = 0;
 
   if (!pEngine -> replayBars(&replayParams, &iCode)) {
