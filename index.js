@@ -11,6 +11,7 @@ var defaultOptions = {
   start: '1491226200',
   end: '1491312600',
   period: 15,
+  type: 'MINUTE',
   username: process.env.USERNAME,
   password: process.env.PASSWORD
 };
