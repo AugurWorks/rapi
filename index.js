@@ -5,6 +5,9 @@ var datastore = require('./lib/datastore');
 var express = require('express');
 var app = express();
 
+var log4js = require('log4js');
+var logger = log4js.getLogger();
+
 var defaultOptions = {
   exchange: 'CME',
   ticker: 'ESM7',
@@ -21,6 +24,7 @@ app.get('/health', function (req, res) {
 });
 
 app.get('/', function (req, res) {
+  logger.info('Responding to request: ' + JSON.stringify(req.query));
   var options = extend(true, {}, defaultOptions, req.query);
   options.start = parseInt(options.start);
   options.end = parseInt(options.end);
@@ -31,5 +35,5 @@ app.get('/', function (req, res) {
 });
 
 app.listen(3000, function () {
-  console.log('RAPI is listening on port 3000');
+  logger.info('RAPI is listening on port 3000');
 });
