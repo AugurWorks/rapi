@@ -16,6 +16,10 @@ var defaultOptions = {
   password: process.env.PASSWORD
 };
 
+app.get('/health', function (req, res) {
+  res.sendStatus(200);
+});
+
 app.get('/', function (req, res) {
   var options = extend(true, {}, defaultOptions, req.query);
   options.start = parseInt(options.start);
