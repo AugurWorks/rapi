@@ -4,10 +4,9 @@
   "description": "Express bridge to the C++ RAPI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "TheConnMan",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
     "extend": "^3.0.0",
