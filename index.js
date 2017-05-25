@@ -19,6 +19,20 @@ var defaultOptions = {
   password: process.env.PASSWORD
 };
 
+if (process.env.FLUENTD_HOST) {
+  var tags = (process.env.FLUENTD_TAGS ? process.env.FLUENTD_TAGS.split(',') : []).reduce((allTags, tag) => {
+    var pair = tag.split(':');
+    allTags[pair[0].trim()] = pair.length === 1 ? true : pair[1].trim();
+    return allTags;
+  }, {});
+  tags.function = 'RAPI';
+  log4js.addAppender(require('fluent-logger').support.log4jsAppender('rapi', {
+    host: process.env.FLUENTD_HOST,
+    timeout: 3.0,
+    tags
+  }));
+}
+
 app.get('/health', function (req, res) {
   res.sendStatus(200);
 });

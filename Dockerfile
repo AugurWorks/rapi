@@ -6,7 +6,7 @@ WORKDIR /opt/app
 RUN apt-get update && \
   apt-get install -y g++ zlib1g-dev libkrb5-dev curl && \
   curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-  apt-get install -y nodejs && \
+  apt-get install -y nodejs git && \
   apt-get clean
 
 COPY package.json /opt/app
