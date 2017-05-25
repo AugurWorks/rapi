@@ -1,16 +1,17 @@
 {
   "name": "rapi",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Express bridge to the C++ RAPI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "TheConnMan",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
     "extend": "^3.0.0",
+    "fluent-logger": "github:theconnman/fluent-logger-node",
+    "log4js": "^1.1.1",
     "moment": "^2.18.1"
   }
 }

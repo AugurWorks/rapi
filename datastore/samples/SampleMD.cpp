@@ -221,8 +221,12 @@ int main(int argc, char * * argv, char * * envp) {
   replayParams.sTicker.pData      = argv[4];
   replayParams.sTicker.iDataLen   = (int)strlen(replayParams.sTicker.pData);
 
-  replayParams.iType              = BAR_TYPE_MINUTE;
-  replayParams.iSpecifiedMinutes  = atoi(argv[5]);
+  if (strcmp(argv[8], "DAY") == 0) {
+    replayParams.iType              = BAR_TYPE_DAILY;
+  } else {
+    replayParams.iType              = BAR_TYPE_MINUTE;
+    replayParams.iSpecifiedMinutes  = atoi(argv[5]);
+  }
 
   replayParams.bCustomSession = false;
 
@@ -236,7 +240,7 @@ int main(int argc, char * * argv, char * * envp) {
     printf("REngine::replayBars() error : %d\n", iCode);
   }
 
-  sleep(2);
+  sleep(5);
 
   delete pEngine;
   delete pCallbacks;
